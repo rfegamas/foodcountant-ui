@@ -7,7 +7,6 @@ function RenderSubmitButton(props) {
 
     const handleSubmit = (event) => {
         setIsSubmitted(true)
-        console.log("yes :)")
     }
 
     return (
