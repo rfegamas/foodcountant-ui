@@ -2,7 +2,8 @@ import React from "react"
 import "./App.css"
 import Input from "./Input"
 import Submit from "./Submit"
-import Recommended from "./Recommended"
+import RecommendedNutritions from "./RecommendedNutritions"
+import RecommendedFoods from "./RecommendedFoods"
 
 import { useState } from "react"
 
@@ -17,14 +18,12 @@ function RenderHeader() {
   )
 }
 
-
-
 function App() {
   const [foodDiary, setFoodDiary] = useState([[""]])
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [recommendedNutritions, setRecommendedNutritions] = useState({
-    "Protein": false,
-    "Fat": false,
+    "Protein": true,
+    "Fat": true,
   })
 
   return (
@@ -34,7 +33,15 @@ function App() {
         <Input foodDiary={foodDiary} setFoodDiary={setFoodDiary} />
         <Submit setIsSubmitted={setIsSubmitted}/>
         {isSubmitted
-          ? <Recommended recommendedNutritions={recommendedNutritions} setRecommendedNutritions={setRecommendedNutritions}/>
+          ? <div>
+              <RecommendedNutritions
+                recommendedNutritions={recommendedNutritions}
+                setRecommendedNutritions={setRecommendedNutritions}
+                />
+              <RecommendedFoods
+                recommendedNutritions={recommendedNutritions}
+              />
+            </div>
           : null
         }
       </div>

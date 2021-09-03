@@ -1,6 +1,12 @@
 import React from "react"
 
-import { FormLabel, FormControl, FormGroup, FormControlLabel, Checkbox } from "@material-ui/core"
+import {
+    FormLabel,
+    FormControl,
+    FormGroup,
+    FormControlLabel,
+    Checkbox
+} from "@material-ui/core"
 
 
 function RenderRecommendedNutritions(props) {
@@ -35,7 +41,7 @@ function RenderRecommendedNutritions(props) {
     )
 }
 
-function Recommended(props) {
+function RecommendedNutritions(props) {
     return (
         <div>
             <RenderRecommendedNutritions
@@ -46,4 +52,4 @@ function Recommended(props) {
     )
 }
 
-export default Recommended
+export default RecommendedNutritions
