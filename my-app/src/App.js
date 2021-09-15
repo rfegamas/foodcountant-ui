@@ -2,7 +2,8 @@ import React from "react"
 import "./App.css"
 import Input from "./Input"
 import Submit from "./Submit"
-import RecommendedNutritions from "./RecommendedNutritions"
+import Recommended from "./Recommended"
+import RecommendedNutrients from "./RecommendedNutrients"
 import RecommendedFoods from "./RecommendedFoods"
 
 import { useState } from "react"
@@ -21,29 +22,52 @@ function RenderHeader() {
 function App() {
   const [foodDiary, setFoodDiary] = useState([[""]])
   const [isSubmitted, setIsSubmitted] = useState(false)
-  const [recommendedNutritions, setRecommendedNutritions] = useState({
-    "Protein": true,
-    "Fat": true,
-  })
+  const [submitFinished, setSubmitFinished] = useState(false)
+  const [callAPI, setCallAPI] = useState(false)
+  const [callAPIFinished, setCallAPIFinished] = useState(false)
+  const [recommendedNutrients, setRecommendedNutrients] = useState({})
 
   return (
     <div className="App">
       <RenderHeader />
       <div style={{ marginLeft: "100px", marginRight: "100px", marginTop: "100px" }}>
         <Input foodDiary={foodDiary} setFoodDiary={setFoodDiary} />
-        <Submit setIsSubmitted={setIsSubmitted}/>
-        {isSubmitted
+        <Submit
+          setIsSubmitted={setIsSubmitted}
+          setCallAPI={setCallAPI}
+        />
+        { isSubmitted
           ? <div>
-              <RecommendedNutritions
-                recommendedNutritions={recommendedNutritions}
-                setRecommendedNutritions={setRecommendedNutritions}
-                />
-              <RecommendedFoods
-                recommendedNutritions={recommendedNutritions}
+              <Recommended
+                callAPI={callAPI}
+                setCallAPI={setCallAPI}
+                foodDiary={foodDiary}
+                recommendedNutrients={recommendedNutrients}
+                setRecommendedNutrients={setRecommendedNutrients}
               />
             </div>
           : null
         }
+
+        
+        {/* {isSubmitted
+          ? <div>
+              <RecommendedNutrients
+                foodDiary={foodDiary}
+                fetchNutrientsAPI={fetchNutrientsAPI}
+                setFetchNutrientsAPI={setFetchNutrientsAPI}
+                setFetchFoodsAPI={setFetchFoodsAPI}
+                recommendedNutrients={recommendedNutrients}
+                setRecommendedNutrients={setRecommendedNutrients}
+                />
+              <RecommendedFoods
+                fetchFoodsAPI={fetchFoodsAPI}
+                setFetchFoodsAPI={setFetchFoodsAPI}
+                recommendedNutrients={recommendedNutrients}
+              />
+            </div>
+          : null
+        } */}
       </div>
     </div>
   );

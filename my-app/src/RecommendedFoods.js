@@ -1,26 +1,40 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 
 function RenderRecommendedFoods(props) {
-    function getCheckedNutritions(recommendedNutritions) {
-        var checkedNutritions = []
-        for (let nutrition in recommendedNutritions){
-            if (recommendedNutritions[nutrition]) {
-                checkedNutritions = [...checkedNutritions, nutrition]
-            }
-        }
+    // const [checkedNutrients, setCheckedNutrients] = useState([""])
+    // const [foods, setFoods] = useState([""])
+    // const recommendedNutrients = props.recommendedNutrients
+    // const fetchFoodsAPI = props.fetchFoodsAPI
+    // const setFetchFoodsAPI = props.setFetchFoodsAPI
 
-        return checkedNutritions
-    }
+    // useEffect(() => {
+    //     function getCheckedNutrients(recommendedNutrients) {
+    //         var copyCheckedNutrients = [...checkedNutrients]
+    //         for (let nutrition in recommendedNutrients){
+    //             if (recommendedNutrients[nutrition]) {
+    //                 copyCheckedNutrients = [...copyCheckedNutrients, nutrition]
+    //             }
+    //         }
+            
+    //         setCheckedNutrients(copyCheckedNutrients)
+    //     }
+    
+    //     async function getFoods(checkedNutrients) {
+    //         const fetchedFoods = await getFoodsByNutrients(checkedNutrients)
+            
+    //         setFoods(fetchedFoods)
+    //     }
 
-    function getFoods(chekedNutritions) {
-        const foods = ["Milk", "Butter", "Diabetes"]
+    //     if (fetchFoodsAPI) {
+    //         getCheckedNutrients(recommendedNutrients)
+    //         getFoods(checkedNutrients)
 
-        return foods
-    }
+    //         setFetchFoodsAPI(false)
+    //     }
+    // })
 
-    const recommendedNutritions = props.recommendedNutritions
-    const checkedNutritions = getCheckedNutritions(recommendedNutritions)
-    const foods = getFoods(checkedNutritions)
+    const foods = props.foods
+    const checkedNutrients = props.checkedNutrients
 
     return (
         <div>
@@ -39,7 +53,10 @@ function RenderRecommendedFoods(props) {
 function RecommendedFoods(props) {
     return (
         <div>
-            <RenderRecommendedFoods recommendedNutritions={props.recommendedNutritions}/>
+            <RenderRecommendedFoods
+              foods={props.foods}
+              checkedNutrients={props.checkedNutrients}
+            />
         </div>
     )
 }

@@ -4,9 +4,11 @@ import { Button } from "@material-ui/core"
 
 function RenderSubmitButton(props) {
     const setIsSubmitted = props.setIsSubmitted
+    const setCallAPI = props.setCallAPI
 
     const handleSubmit = (event) => {
         setIsSubmitted(true)
+        setCallAPI(true)
     }
 
     return (
@@ -21,7 +23,10 @@ function RenderSubmitButton(props) {
 function Submit(props) {
     return (
         <div>
-            <RenderSubmitButton setIsSubmitted={props.setIsSubmitted}/>
+            <RenderSubmitButton
+              setIsSubmitted={props.setIsSubmitted}
+              setCallAPI={props.setCallAPI}
+            />
         </div>
     )
 }
